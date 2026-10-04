@@ -32,3 +32,20 @@ The relevant entry from `TROPHY.TRP` is:
 Trophy ID 19 (`0x13`) is the canonical identifier for Gone Viral within Skate 3.
 This value is the handle the game engine uses when it calls the PS3 trophy service to award the trophy (`sceNpTrophyUnlockTrophy`).
 Any save-file flag, in-game condition check, or code patch that targets this trophy will reference this ID.
+
+## Executable Preparation & Environment
+
+To analyze the trophy unlock logic, we inspect the main game executable from the latest title update:
+
+1. **Acquisition:**
+   - The final official update release for Skate 3 is version `1.05`.
+   - The update package (`.pkg`) was obtained via `rusty-psn` and unpacked to extract the updated `EBOOT.BIN`.
+   - The v1.05 `EBOOT.BIN` is slightly larger than the base release executable due to the inclusion of DLC.
+
+2. **Decryption:**
+   - The encrypted PS3 executable was decrypted into an ELF binary using RPCS3's built-in decryption utilities.
+
+3. **Ghidra Analysis & Tooling:**
+   - The decrypted ELF was imported into Ghidra targeting the big-endian `PowerISA-Altivec-64-32addr` architecture.
+   - `Ps3GhidraScripts` was executed according to its `README.md` and `ppc_64_32.cspec` was updated in the process.
+   - `GhidraMCP` was configured to interface directly with the active CodeBrowser session for decompilation workflows.

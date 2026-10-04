@@ -11,6 +11,8 @@ This repo documents reverse engineering efforts on how to trigger the trophy unl
 |------|---------|
 | [Ghidra](https://github.com/NationalSecurityAgency/ghidra) | Reverse engineering / decompilation platform |
 | [Ps3GhidraScripts](https://github.com/clienthax/Ps3GhidraScripts) | A collection of scripts for parsing PS3 executables with Ghidra |
+| [GhidraMCP](https://github.com/lauriewired/ghidramcp) | MCP Server for Ghidra |
+| [rusty-psn](https://github.com/RainbowCookie32/rusty-psn) | A tool for downloading PS3 game updates |
 | [RPCS3](https://rpcs3.net) | PlayStation 3 emulator and debugger |
 
 ## Community & Discussion

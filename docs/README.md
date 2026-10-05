@@ -8,7 +8,7 @@ Documentation index for the investigation, reverse engineering, and analysis of 
    - Official metadata and trophy description.
    - Community trophy guide and video references.
 
-2. [**How to Unlock the Gone Viral Trophy?**](unlock_gone_viral.md)
+2. [**How to Unlock the Gone Viral Trophy?**](gone_viral_unlock.md)
    - Identify trophy details from game files.
    - Static analysis of executable.
    - Decompiled call graphs.

@@ -1,10 +1,8 @@
-# Unlock Gone Viral
+# How to Unlock the Gone Viral Trophy?
 
 Investigate how the Gone Viral trophy unlocks.
 
 ## Trophy Identification
-
-### Background
 
 PS3 games come with a `TROPHY.TRP` archive that describes every trophy the title
 can award.
@@ -102,7 +100,7 @@ The PS3 Trophy API is part of Sony's Network Platform library (`libnp.sprx`).
 
 ## Decompiled Trophy Architecture & Call Graph
 
-Through executable decompilation in Ghidra, the game's trophy management pipeline was reconstructed across its two trigger pathways:
+Through executable decompilation in Ghidra, the game's trophy management pipeline was reconstructed across two trigger pathways:
 
 ```
 Pathway 1: FreeSkate / Lobby Presence Handshake
@@ -162,7 +160,7 @@ The game engine routes all trophy operations through a central worker thread fun
 
 ### Online Session & FreeSkate Lobby Trigger Logic (`FUN_0045dc58` & `FUN_00cadc64`)
 
-In addition to competitive match completion events, the binary contains an immediate online participant evaluation mechanism (`FUN_0045dc58` / `FUN_00cadc64`) that explains why **Gone Viral** unlocks simply upon entering an online FreeSkate lobby:
+In addition to competitive match completion events, the binary contains an immediate online participant evaluation mechanism (`FUN_0045dc58` / `FUN_00cadc64`) that explains why Gone Viral unlocks simply upon entering an online FreeSkate lobby:
 
 1. **Online Player Presence & Lobby Sync (`FUN_0045dc58`):**
    - When a player joins any online session (including FreeSkate lobbies), player state packets and profile metadata are synchronized.

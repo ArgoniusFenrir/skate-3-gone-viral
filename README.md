@@ -5,6 +5,10 @@ The trophy no longer unlocks and the [EA forum thread](https://forums.ea.com/dis
 
 This repo documents reverse engineering efforts on how to trigger the trophy unlock, with the goal of either producing a community-driven open source fix or providing EA with enough detail to ship an official one.
 
+## Documentation
+
+Documentation of the investigation, reverse engineering, and analysis of the Gone Viral trophy can be found [here](docs/README.md).
+
 ## Tools
 
 | Tool | Purpose |

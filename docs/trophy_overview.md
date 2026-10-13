@@ -1,4 +1,4 @@
-# Gone Viral Trophy Overview
+# Trophy Overview
 
 Official metadata, trophy description, community trophy guide analysis, and video proof.
 
@@ -42,4 +42,6 @@ It spreads from player to player purely through online contact.
 Any time you share an online session with someone who already holds the trophy, the game detects that and awards it to you automatically.
 Community guides confirm this behaviour, and video proof shows it unlocking within seconds of loading into a session.
 
-**Personal experience:** Based on playing Skate 3 back in the day, (if memory serves me well) the trophy unlocks immediately after joining a FreeSkate session with an infected player.
+**Personal experience:** based on playing Skate 3 back in the day, (if memory serves me well) the trophy unlocks immediately after joining a FreeSkate session with an infected player.
+
+**Next steps:** analyze the game executable to find out how the Gone Viral trophy unlocks.

@@ -1,6 +1,6 @@
-# How to Unlock the Gone Viral Trophy?
+# Static Analysis
 
-Investigation notes on how the Gone Viral trophy unlocks.
+Static analysis of how the Gone Viral trophy unlocks.
 
 ## Trophy Identification
 
@@ -137,7 +137,7 @@ Pathway 2: Online Match Progression & Session End
         └──► FUN_004bd968 (TrophyManager_OnTrophyUnlockedCallback: Engine Notification)
 ```
 
-### Central Trophy Dispatcher (`FUN_004bdb60` / `0x004bdb60`)
+### Central Trophy Dispatcher
 
 The game engine routes all trophy operations through a central worker thread function:
 - It maintains an internal unlocked bitset (`param_1 + 0x18`) initialized via `sceNpTrophyGetTrophyUnlockState`.
@@ -159,11 +159,11 @@ The game engine routes all trophy operations through a central worker thread fun
   }
   ```
 
-### Online Session & FreeSkate Lobby Trigger Logic (`FUN_0045dc58` & `FUN_00cadc64`)
+### Online Session & FreeSkate Lobby Trigger Logic
 
 In addition to competitive match completion events, the binary contains an immediate online participant evaluation mechanism (`FUN_0045dc58` / `FUN_00cadc64`) that explains why Gone Viral unlocks simply upon entering an online FreeSkate lobby:
 
-1. **Online Player Presence & Lobby Sync (`FUN_0045dc58`):**
+1. **Online Player Presence & Lobby Sync**
    - When a player joins any online session (including FreeSkate lobbies), player state packets and profile metadata are synchronized.
    - Message/event code `0x7b` represents the online peer connection handshake / presence notification.
    - Upon handling event `0x7b`, `_opd_FUN_0045dc58` checks the remote player's infected/trophy status and directly calls:
@@ -186,12 +186,12 @@ In addition to competitive match completion events, the binary contains an immed
      }
      ```
 
-2. **Internal Unlock Dispatcher (`FUN_00cadc64` / `FUN_00f2deb0`):**
+2. **Internal Unlock Dispatcher**
    - `FUN_00f2deb0` routes directly into the game engine's internal award queue manager (`FUN_00cadc64`).
    - `FUN_00cadc64(context, 0x13)` appends entry `[trophyId = 0x13, param = 0xffffffff, type = 2]` into the active trophy ring/FIFO queue (`param_1 + 0x20`).
    - The background worker thread (`FUN_004bdb60`) consumes the entry and immediately calls `sceNpTrophyUnlockTrophy(context, handle, 0x13, &platflag)`.
 
-### Summary
+## Summary
 
 This summary covers the findings so far, all of which were produced by an agentic AI driving Ghidra through MCP tools against the decrypted v1.05 `EBOOT.BIN`:
 

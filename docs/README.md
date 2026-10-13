@@ -4,11 +4,11 @@ Documentation index for the investigation, reverse engineering, and analysis of 
 
 ## Index
 
-1. [**Gone Viral Trophy Overview**](gone_viral_overview.md)
+1. [**Trophy Overview**](trophy_overview.md)
    - Official metadata and trophy description.
    - Community trophy guide and video references.
 
-2. [**How to Unlock the Gone Viral Trophy?**](gone_viral_unlock.md)
+2. [**Static Analysis**](static_analysis.md)
    - Identify trophy details from game files.
    - Static analysis of executable.
    - Decompiled call graphs.

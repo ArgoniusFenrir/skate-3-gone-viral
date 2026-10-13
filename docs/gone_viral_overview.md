@@ -6,7 +6,7 @@ Official metadata, trophy description, community trophy guide analysis, and vide
 
 | Attribute | Details |
 | :--- | :--- |
-| **Trophy Name** | **Gone Viral** |
+| **Trophy Name** | Gone Viral |
 | **Description** | Catch the Skate Flu |
 | **Type** | Bronze |
 | **Secret** | Yes |

@@ -1,12 +1,12 @@
 # How to Unlock the Gone Viral Trophy?
 
-Investigate how the Gone Viral trophy unlocks.
+Investigation notes on how the Gone Viral trophy unlocks.
 
 ## Trophy Identification
 
 PS3 games come with a `TROPHY.TRP` archive that describes every trophy the title
 can award.
-Parsing this archive gives us the game-defined identifier for Gone Viral that we can then search for in the game executable and save data.
+Parsing this archive gives us the game-defined identifier for Gone Viral that we can then search for in the game executable.
 
 ### Trophy Details
 
@@ -28,8 +28,7 @@ The relevant entry from `TROPHY.TRP` is:
 ### Key Findings
 
 Trophy ID 19 (`0x13`) is the canonical identifier for Gone Viral within Skate 3.
-This value is the handle the game engine uses when it calls the PS3 trophy service to award the trophy (`sceNpTrophyUnlockTrophy`).
-Any save-file flag, in-game condition check, or code patch that targets this trophy will reference this ID.
+This value is the handle the game engine uses when it calls the PS3 trophy service to award the trophy through a `sceNpTrophyUnlockTrophy` function call.
 
 ## Executable Preparation & Environment
 
@@ -84,6 +83,8 @@ The PS3 Trophy API is part of Sony's Network Platform library (`libnp.sprx`).
   *Note: The first argument `ppu_thread& ppu` is RPCS3's internal C++ host execution harness parameter; the 4 remaining parameters map 1:1 to the guest PowerPC registers `r3` through `r6`.*
 
 ### Workflow
+
+> **Note:** This workflow was executed with agentic AI by driving Ghidra analysis via MCP tools.
 
 1. **Cross-Referencing:**
    - Query all cross-references to `sceNpTrophyUnlockTrophy` across the executable.
@@ -190,9 +191,22 @@ In addition to competitive match completion events, the binary contains an immed
    - `FUN_00cadc64(context, 0x13)` appends entry `[trophyId = 0x13, param = 0xffffffff, type = 2]` into the active trophy ring/FIFO queue (`param_1 + 0x20`).
    - The background worker thread (`FUN_004bdb60`) consumes the entry and immediately calls `sceNpTrophyUnlockTrophy(context, handle, 0x13, &platflag)`.
 
-### Summary of Trigger Pathways for Gone Viral
+### Summary
+
+This summary covers the findings so far, all of which were produced by an agentic AI driving Ghidra through MCP tools against the decrypted v1.05 `EBOOT.BIN`:
+
+- `TROPHY.TRP` identifies Gone Viral as trophy ID `19` (`0x13`).
+- All trophy awards go through one worker thread.
+It drains a synchronized queue and calls `sceNpTrophyUnlockTrophy` with the queued trophy ID.
+- The AI found two paths that queue trophy `0x13`:
 
 | Pathway | Trigger Location | Condition |
 |---------|-----------------|-----------|
-| **FreeSkate / Lobby Join** | `_opd_FUN_0045dc58` (event `0x7b`) -> `FUN_00cadc64` | Connecting to or hosting a session where a peer has the viral flag set in their presence packet (`FUN_00f2deb0(ctx, 0x13)`). No event or match completion needed. |
-| **Match / Session Events** | `_opd_FUN_00448008` & `_opd_FUN_004488e8` -> `FUN_004bd4ec` | Completing an online multiplayer match or team challenge session with an infected player. |
+| **FreeSkate / Lobby Join** | `_opd_FUN_0045dc58` (event `0x7b`) -> `FUN_00f2deb0(ctx, 0x13)` -> `FUN_00cadc64` | Handling the online peer handshake / presence event. The unlock appears to be queued without a match or event finishing. |
+| **Match / Session Events** | `_opd_FUN_00448008` & `_opd_FUN_004488e8` -> `FUN_004bd4ec` / `FUN_004bd57c` | Online match or session end handlers evaluate the participant roster and dispatch a trophy event. |
+
+These findings come from AI-assisted static analysis and decompilation only.
+Function names, the meaning of event `0x7b`, and the exact trigger conditions are inferences and have not been confirmed at runtime.
+
+**Next steps:** verify the AI findings with RPCS3's debug capabilities at runtime.
+This means setting breakpoints on the identified functions, inspecting registers and memory, and confirming which pathway and conditions actually unlock the Gone Viral trophy.

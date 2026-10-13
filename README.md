@@ -3,7 +3,7 @@
 The Gone Viral trophy in Skate 3 (PS3) has been broken since May 2025.
 The trophy no longer unlocks and the [EA forum thread](https://forums.ea.com/discussions/skate-franchise-discussion-en/gone-viral-trophy-on-skate-3-ps3/12244224) on the issue has seen little to no progress from EA's side.
 
-This repo documents reverse engineering efforts on how to trigger the trophy unlock, with the goal of either producing a community-driven open source fix or providing EA with enough detail to ship an official one.
+This repo documents reverse engineering efforts on how to trigger the trophy unlock, with the goal of either producing a community-driven open source fix or providing EA with enough detail to ship an official fix.
 
 ## Documentation
 

@@ -1,0 +1,19 @@
+# Ignore everything by default.
+*
+
+# Allow files in the repo root.
+!/.gitattributes
+!/.gitignore
+!/LICENSE
+!/README.md
+
+# Allow directories and files.
+!/docs
+!/docs/*.md
+!/docs/media
+!/docs/media/*.mp4
+!/docs/media/*.png
+!/docs/sessions
+!/docs/sessions/*.md
+!/rpcs3
+!/rpcs3/imported_patch.yml

@@ -1,0 +1,33 @@
+Version: 1.2
+PPU-376469bd27d45a617b6d086894c07e4a00f86fde:
+  "Change sceNpTrophyUnlockTrophy stub to NOP":
+    Games:
+      "Skate 3":
+        BLES00760: [ 01.05 ]
+    Author: "ArgoniusFenrir"
+    Notes: "Gone Viral trophy reverse engineering."
+    Patch Version: 1.0
+    Patch:
+      - [ be32, 0x0144cec4, 0x38600000 ] # Sets r3 to 0 (success status).
+      - [ be32, 0x0144cec8, 0x4e800020 ] # Returns immediately (blr).
+  "Skip bitset update in trophy worker thread":
+    Games:
+      "Skate 3":
+        BLES00760: [ 01.05 ]
+    Author: "ArgoniusFenrir"
+    Notes: "Gone Viral trophy reverse engineering."
+    Patch Version: 1.0
+    Patch:
+      - [ be32, 0x004bdfc8, 0x48000014 ] # Change bgt to b 0x004bdfdc to skip 3 bitset update instructions.
+  "Use Gone Viral hash instead of Mantastic Voyage hash in trick line evaluator":
+    Games:
+      "Skate 3":
+        BLES00760: [ 01.05 ]
+    Author: "ArgoniusFenrir"
+    Notes: "Replaces the Mantastic Voyage hash (0x1bd48906e119a954) with the Gone Viral hash (0x17e8ac1014ab97a5) in FUN_00500734. Triggering 3+ manuals in a line will now attempt to unlock trophy 0x13 (Gone Viral) instead of 0x0C (Mantastic Voyage). Use together with 'Skip bitset update' and optionally 'Change sceNpTrophyUnlockTrophy stub to NOP' patches."
+    Patch Version: 1.0
+    Patch:
+      - [ be32, 0x0050092c, 0x3C6017E8 ] # lis  r3,0x17e8   (was 0x1bd4 for Mantastic Voyage)
+      - [ be32, 0x00500934, 0x6063AC10 ] # ori  r3,r3,0xac10 (was 0x8906)
+      - [ be32, 0x0050093c, 0x646314AB ] # oris r3,r3,0x14ab (was 0xe119)
+      - [ be32, 0x00500940, 0x606397A5 ] # ori  r3,r3,0x97a5 (was 0xa954)

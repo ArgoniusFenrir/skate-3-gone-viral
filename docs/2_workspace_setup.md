@@ -2,6 +2,21 @@
 
 Workspace setup for the reverse engineering efforts.
 
+## Operating System
+
+Linux Mint (`x86-64`) is used, which affects tool installation paths in a few places, particularly for Flatpak-installed applications.
+
+### Installing RPCS3 Patches
+
+The [`imported_patch.yml`](../rpcs3/imported_patch.yml) in this repo is symlinked into the Flatpak patches directory
+rather than copied, so edits to the repo file take effect on the next RPCS3 launch
+without any manual copy step:
+
+```console
+$ cd ~/.var/app/net.rpcs3.RPCS3/config/rpcs3/patches
+$ ln -s <path to clone of this repo>/rpcs3/imported_patch.yml imported_patch.yml
+```
+
 ## Tools
 
 The following tools were used to decompress binaries, analyze code, and verify findings.

@@ -16,11 +16,13 @@ The relevant entry from `TROPHY.TRP` is:
 </trophy>
 ```
 
-| Field    | Value | Meaning |
-|----------|-------|---------|
-| `id`     | `019` | Decimal trophy index within this title |
-| `hidden` | `yes` | Hidden in the XMB until earned |
-| `ttype`  | `B`   | Bronze trophy |
+| Field       | Value | Meaning |
+|-------------|-------|---------|
+| `trophy id` | `019` | Decimal trophy index within this title |
+| `hidden`    | `yes` | Hidden in the XMB until earned |
+| `ttype`     | `B`   | Bronze trophy |
 
 Trophy ID 19 (`0x13`) is the unique identifier for Gone Viral within Skate 3.
 This value is the handle the game engine uses when it calls the PS3 trophy service to award the trophy through a `sceNpTrophyUnlockTrophy` function call.
+
+The same method gives the trophy IDs of other trophies of interest, such as Mantastic Voyage (`0xC`) and Trick Spammer (`0x7`).

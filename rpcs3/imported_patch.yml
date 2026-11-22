@@ -1,6 +1,6 @@
 Version: 1.2
 PPU-376469bd27d45a617b6d086894c07e4a00f86fde:
-  "Change sceNpTrophyUnlockTrophy function to NOP":
+  "Gone Viral Debug - Change sceNpTrophyUnlockTrophy function to NOP":
     Games:
       "Skate 3":
         BLES00760: [ 01.05 ]
@@ -10,7 +10,7 @@ PPU-376469bd27d45a617b6d086894c07e4a00f86fde:
     Patch:
       - [ be32, 0x0144cec4, 0x38600000 ] # Sets r3 to 0 (success status).
       - [ be32, 0x0144cec8, 0x4e800020 ] # Returns immediately (blr).
-  "Skip bitset update in trophy worker thread":
+  "Gone Viral Debug - Skip bitset update in trophy worker thread":
     Games:
       "Skate 3":
         BLES00760: [ 01.05 ]
@@ -19,12 +19,12 @@ PPU-376469bd27d45a617b6d086894c07e4a00f86fde:
     Patch Version: 1.0
     Patch:
       - [ be32, 0x004bdfc8, 0x48000014 ] # Change bgt to b 0x004bdfdc to skip 3 bitset update instructions.
-  "Replace Mantastic Voyage trophy hash with Gone Viral":
+  "Gone Viral Debug - Replace Mantastic Voyage trophy hash with Gone Viral":
     Games:
       "Skate 3":
         BLES00760: [ 01.05 ]
     Author: "ArgoniusFenrir"
-    Notes: "Gone Viral trophy reverse engineering: replace the Mantastic Voyage hash (0x1bd48906e119a954) with the Gone Viral hash (0x17e8ac1014ab97a5) in FUN_00500734. Triggering 3+ manuals in a sequence will now unlock trophy 0x13 (Gone Viral) instead of 0x0C (Mantastic Voyage).
+    Notes: "Gone Viral trophy reverse engineering: replace the Mantastic Voyage hash (0x1bd48906e119a954) with the Gone Viral hash (0x17e8ac1014ab97a5) in FUN_00500734. Triggering 3+ manuals in a sequence will now unlock trophy 0x13 (Gone Viral) instead of 0x0C (Mantastic Voyage)."
     Patch Version: 1.0
     Patch:
       - [ be32, 0x0050092c, 0x3C6017E8 ] # lis  r3,0x17e8    (was 0x1bd4 for Mantastic Voyage)

@@ -31,3 +31,12 @@ PPU-376469bd27d45a617b6d086894c07e4a00f86fde:
       - [ be32, 0x00500934, 0x6063AC10 ] # ori  r3,r3,0xac10 (was 0x8906 for Mantastic Voyage)
       - [ be32, 0x0050093c, 0x646314AB ] # oris r3,r3,0x14ab (was 0xe119 for Mantastic Voyage)
       - [ be32, 0x00500940, 0x606397A5 ] # ori  r3,r3,0x97a5 (was 0xa954 for Mantastic Voyage)
+  "Skate3BlazeServer - No Sync Check":
+    Games:
+      "Skate 3":
+        BLES00760: [ 01.05 ]
+    Author: "ArgoniusFenrir"
+    Notes: "Reproduces the 'Skate 3 No Sync Check' EBOOT.BIN: the only difference from the 1.05 EBOOT.BIN is in FUN_004adec8 at 0x004adf88."
+    Patch Version: 1.0
+    Patch:
+      - [ be32, 0x004adf88, 0x7f894800 ] # cmpw cr7,r9,r9 (was cmpw cr7,r9,r0), so the following beq at 0x004adf8c is always taken.

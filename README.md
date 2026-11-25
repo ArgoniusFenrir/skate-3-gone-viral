@@ -20,3 +20,11 @@ Reverse engineering documentation for the "Gone Viral" trophy can be found [here
 
 If you have reverse engineering findings of your own, captured network traffic, etc., please open a PR or an issue.
 Contributions and collaboration are much appreciated.
+
+## Support
+
+If you find this project helpful and want to support its development, consider buying me a coffee:
+
+<a href="https://www.buymeacoffee.com/ArgoniusFenrir" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="45">
+</a>

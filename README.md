@@ -7,7 +7,11 @@ This repo documents reverse engineering efforts on how to trigger the trophy unl
 
 ## Documentation
 
-Reverse engineering documentation for the "Gone Viral" trophy can be found [here](docs/README.md).
+Reverse engineering documentation for the Gone Viral trophy can be found [here](docs/README.md).
+
+## Custom Server
+
+My [fork of Skate3BlazeServer](https://github.com/ArgoniusFenrir/Skate3BlazeServer) unlocks the Gone Viral trophy on RPCS3 without modifying the game. It is based on the [original Skate3BlazeServer](https://github.com/skate6743/Skate3BlazeServer). See the [docs](docs/sessions/session_20261122.md) for more information.
 
 ## Community & Discussion
 

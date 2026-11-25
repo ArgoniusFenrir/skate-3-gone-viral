@@ -9,6 +9,8 @@
 !/README.md
 
 # Allow directories and files.
+!/.github
+!/.github/FUNDING.yml
 !/docs
 !/docs/*.md
 !/docs/media
